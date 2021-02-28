@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:csaat/components/RoundedInputFieldNormal.dart';
+import 'package:csaat/components/rounded_input_field.dart';
 import 'package:flutter/material.dart';
 
 class AddChildScreen extends StatelessWidget {
@@ -21,19 +23,41 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(200.0),
+        preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           title: Text('            ADD A CHILD'),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(50),
+              bottom: Radius.circular(20),
             ),
           ),
           actions: <Widget>[],
         ),
       ),
       body: Center(
-        child: Text(''),
+        child: Column(
+          children: [
+            Text(''),
+            Image.asset(
+              'assets/images/childadd.jpg',
+              width: 600.0,
+              height: 240.0,
+              fit: BoxFit.cover,
+            ),
+            RoundedInputFieldNormal(
+              hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+            RoundedInputField(
+              hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+            RoundedInputField(
+              hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -54,12 +78,6 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          new Image.asset(
-            'assets/images/childadd.jpg',
-            width: 600.0,
-            height: 240.0,
-            fit: BoxFit.cover,
-          ),
           DrawerHeader(
               child: Text(
                 'Peter Paul',
