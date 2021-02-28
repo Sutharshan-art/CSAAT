@@ -1,3 +1,4 @@
+import 'package:csaat/Screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:csaat/Screens/Login/components/background.dart';
 import 'package:csaat/Screens/Signup/signup_screen.dart';
@@ -38,7 +39,16 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return HomeScreen();
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(

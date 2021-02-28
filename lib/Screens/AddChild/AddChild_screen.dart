@@ -1,9 +1,8 @@
 import 'dart:ui';
 
-import 'package:csaat/Screens/AddChild/AddChild_screen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class AddChildScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +23,7 @@ class MyHomePage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(200.0),
         child: AppBar(
-          title: Text('      WELCOME TO CSAAT'),
+          title: Text('            ADD A CHILD'),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(50),
@@ -38,14 +37,7 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return AddChildScreen();
-              },
-            ),
-          );
+          // Add your onPressed code here!
         },
         label: Text('Add a Child'),
         icon: Icon(Icons.child_care_sharp),
@@ -62,6 +54,12 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
+          new Image.asset(
+            'assets/images/childadd.jpg',
+            width: 600.0,
+            height: 240.0,
+            fit: BoxFit.cover,
+          ),
           DrawerHeader(
               child: Text(
                 'Peter Paul',
