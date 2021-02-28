@@ -7,13 +7,9 @@ import 'package:csaat/Screens/Paas/paas_screen.dart';
 import 'package:csaat/Screens/feedback/feedback_screen.dart';
 import 'package:csaat/Screens/home/home_screen.dart';
 import 'package:csaat/Screens/profile/profile_screen.dart';
-import 'package:csaat/Screens/settings/settings_screen.dart';
-import 'package:csaat/components/RoundedInputFieldNormal.dart';
-import 'package:csaat/components/rounded_field_location.dart';
-import 'package:csaat/components/rounded_mobile_field.dart';
 import 'package:flutter/material.dart';
 
-class AddChildScreen extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,53 +28,19 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
+        preferredSize: Size.fromHeight(200.0),
         child: AppBar(
-          title: Text('            ADD A CHILD'),
+          title: Text('      Settings'),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
+              bottom: Radius.circular(50),
             ),
           ),
           actions: <Widget>[],
         ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            Text(''),
-            Image.asset(
-              'assets/images/childadd.jpg',
-              width: 600.0,
-              height: 240.0,
-              fit: BoxFit.cover,
-            ),
-            RoundedInputFieldNormal(
-              hintText: "Your Child's FirstName",
-              onChanged: (value) {},
-            ),
-            RoundedInputFieldNormal(
-              hintText: "Your Child's LastName",
-              onChanged: (value) {},
-            ),
-            RoundedInputFieldLocation(
-              hintText: "Your Location",
-              onChanged: (value) {},
-            ),
-            RoundedInputFieldMobile(
-              hintText: "Your Mobile No",
-              onChanged: (value) {},
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        label: Text('Add a Child'),
-        icon: Icon(Icons.child_care_sharp),
-        backgroundColor: Colors.blue,
+        child: Text(''),
       ),
     );
   }

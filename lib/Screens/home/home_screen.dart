@@ -1,6 +1,13 @@
 import 'dart:ui';
 
+import 'package:csaat/Screens/Aboutus/aboutus_screen.dart';
 import 'package:csaat/Screens/AddChild/AddChild_screen.dart';
+import 'package:csaat/Screens/Dataset/dataset_screen.dart';
+import 'package:csaat/Screens/Dmat/dmat_screen.dart';
+import 'package:csaat/Screens/Paas/paas_screen.dart';
+import 'package:csaat/Screens/feedback/feedback_screen.dart';
+import 'package:csaat/Screens/profile/profile_screen.dart';
+import 'package:csaat/Screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -83,7 +90,16 @@ class NavDrawer extends StatelessWidget {
               'Welcome',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return HomeScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
@@ -91,7 +107,16 @@ class NavDrawer extends StatelessWidget {
               'Profile',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ProfileScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.data_usage_sharp),
@@ -99,7 +124,16 @@ class NavDrawer extends StatelessWidget {
               'Datasets',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DatasetScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.local_activity),
@@ -107,7 +141,16 @@ class NavDrawer extends StatelessWidget {
               'PAAS',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PaasScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.ac_unit),
@@ -115,7 +158,16 @@ class NavDrawer extends StatelessWidget {
               'DMAT',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DmatScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
@@ -123,7 +175,16 @@ class NavDrawer extends StatelessWidget {
               'Settings',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SettingsScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.border_color),
@@ -131,7 +192,33 @@ class NavDrawer extends StatelessWidget {
               'Feedback',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return FeedbackScreen();
+                  },
+                ),
+              ),
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.people),
+            title: Text(
+              'About us',
+              style: TextStyle(color: Colors.blue, fontSize: 18),
+            ),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return AboutusScreen();
+                  },
+                ),
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
@@ -139,7 +226,16 @@ class NavDrawer extends StatelessWidget {
               'Logout',
               style: TextStyle(color: Colors.blue, fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return HomeScreen();
+                  },
+                ),
+              ),
+            },
           ),
         ],
       ),
