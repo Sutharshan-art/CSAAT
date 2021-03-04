@@ -11,6 +11,7 @@ import 'package:csaat/Screens/settings/settings_screen.dart';
 import 'package:csaat/components/RoundedInputFieldNormal.dart';
 import 'package:csaat/components/rounded_field_location.dart';
 import 'package:csaat/components/rounded_mobile_field.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddChildScreen extends StatelessWidget {
@@ -26,8 +27,27 @@ class AddChildScreen extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  DateTime currentDate = DateTime.now();
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime pickedDate = await showDatePicker(
+        context: context,
+        initialDate: currentDate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentDate)
+      setState(() {
+        currentDate = pickedDate;
+      });
+  }
+
+  final _formKey = GlobalKey<FormState>();
+  DateTime _chosenDateTime;
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
@@ -74,10 +94,197 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // Add your onPressed code here!
+          showDialog(
+              context: context,
+              builder: (BuildContext) {
+                return AlertDialog(
+                  content: Stack(
+                    overflow: Overflow.visible,
+                    children: <Widget>[
+                      Title(
+                        color: Colors.blue,
+                        child: Text(
+                          "Your Child's Details",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue),
+                        ),
+                      ),
+                      Positioned(
+                        right: -40.0,
+                        top: -40.0,
+                        child: InkResponse(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: CircleAvatar(
+                            child: Icon(Icons.close),
+                            backgroundColor: Colors.red,
+                          ),
+                        ),
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            // Container(
+                            //   height: 200,
+                            //   child: CupertinoDatePicker(
+                            //     mode: CupertinoDatePickerMode.date,
+                            //     initialDateTime: DateTime.now(),
+                            //     onDateTimeChanged: (val) {
+                            //       setState(() {
+                            //         _chosenDateTime = val;
+                            //       });
+                            //     },
+                            //   ),
+                            // ),
+                            SizedBox(height: 50),
+
+                            // TextField(
+                            //   decoration: InputDecoration(
+                            //     icon: Icon(Icons.calendar_today),
+                            //     labelText: 'DOB',
+                            //   ),
+                            // ),
+
+                            RaisedButton(
+                              onPressed: () => _selectDate(context),
+                              child: Text(
+                                "Select your Child's DOB",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: Colors.blue,
+                            ),
+
+                            SizedBox(height: 50),
+                            RaisedButton(
+                              child: Text("Next"),
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext) {
+                                      return AlertDialog(
+                                        content: Stack(
+                                          overflow: Overflow.visible,
+                                          children: <Widget>[
+                                            Title(
+                                              color: Colors.blue,
+                                              child: Text(
+                                                "Your Child's Details",
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.blue),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              right: -40.0,
+                                              top: -40.0,
+                                              child: InkResponse(
+                                                onTap: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: CircleAvatar(
+                                                  child: Icon(Icons.close),
+                                                  backgroundColor: Colors.red,
+                                                ),
+                                              ),
+                                            ),
+                                            Form(
+                                              key: _formKey,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  // Container(
+                                                  //   height: 200,
+                                                  //   child: CupertinoDatePicker(
+                                                  //     mode: CupertinoDatePickerMode.date,
+                                                  //     initialDateTime: DateTime.now(),
+                                                  //     onDateTimeChanged: (val) {
+                                                  //       setState(() {
+                                                  //         _chosenDateTime = val;
+                                                  //       });
+                                                  //     },
+                                                  //   ),
+                                                  // ),
+                                                  SizedBox(height: 50),
+
+                                                  // TextField(
+                                                  //   decoration: InputDecoration(
+                                                  //     icon: Icon(Icons.calendar_today),
+                                                  //     labelText: 'DOB',
+                                                  //   ),
+                                                  // ),
+
+                                                  RaisedButton(
+                                                    onPressed: () =>
+                                                        _selectDate(context),
+                                                    child: Text(
+                                                      "Select your Child's DOB",
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
+                                                    color: Colors.blue,
+                                                  ),
+
+                                                  SizedBox(height: 50),
+                                                  RaisedButton(
+                                                    child: Text("Next"),
+                                                    onPressed: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) {
+                                                            return HomeScreen();
+                                                          },
+                                                        ),
+                                                      );
+                                                    },
+                                                  )
+                                                  // Padding(
+                                                  //   padding: const EdgeInsets.all(8.0),
+                                                  //   child: RaisedButton(
+                                                  //     child: Text("Submitß"),
+                                                  //     onPressed: () {
+                                                  //       if (_formKey.currentState.validate()) {
+                                                  //         _formKey.currentState.save();
+                                                  //       }
+                                                  //     },
+                                                  //   ),
+                                                  // )
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    });
+                              },
+                            )
+                            // Padding(
+                            //   padding: const EdgeInsets.all(8.0),
+                            //   child: RaisedButton(
+                            //     child: Text("Submitß"),
+                            //     onPressed: () {
+                            //       if (_formKey.currentState.validate()) {
+                            //         _formKey.currentState.save();
+                            //       }
+                            //     },
+                            //   ),
+                            // )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              });
         },
-        label: Text('Add a Child'),
-        icon: Icon(Icons.child_care_sharp),
+        icon: Icon(Icons.navigate_next),
+        label: Text('Next'),
         backgroundColor: Colors.blue,
       ),
     );
